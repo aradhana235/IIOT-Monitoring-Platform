@@ -1,0 +1,16 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/iiot_platform
+    username: postgres
+    password: postgres@123
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  cassandra:
+    contact-points: cassandra-prod
+    port: 9042
+    local-datacenter: datacenter1
+    keyspace-name: iiot_keyspace
