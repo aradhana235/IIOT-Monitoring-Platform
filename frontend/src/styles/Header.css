@@ -1,548 +1,505 @@
-<<<<<<< HEAD
-/* .header{
+/* =================================
+   HEADER
+================================= */
 
-height:60px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 25px;
+.header {
 
-background:white;
-box-shadow:0 2px 8px #ddd;
+    height:70px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 25px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+}
+
+
+
+
+
+/* =================================
+   LEFT SECTION
+================================= */
+
+
+.header-left {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
 
 }
 
 
-.logo{
 
-font-size:22px;
-font-weight:bold;
+.menu-btn {
 
-}
+    border:none;
 
+    background:transparent;
 
-.header-right{
+    cursor:pointer;
 
-display:flex;
-gap:20px;
-align-items:center;
+    color:#334155;
 
-} */
+    display:flex;
 
-.header{
+    align-items:center;
 
-height:70px;
-
-background:#ffffff;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:0 30px;
-
-border-bottom:1px solid #e5e7eb;
-
-position:sticky;
-
-top:0;
-
-z-index:1000;
+    justify-content:center;
 
 }
 
-.header-left{
 
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-}
-
-.header-logo{
-
-width:48px;
-
-height:48px;
-
-object-fit:contain;
-
-}
-
-.header-left h2{
-
-font-size:22px;
-
-color:#0f172a;
-
-margin:0;
-
-}
-
-.header-left span{
-
-font-size:13px;
-
-color:#64748b;
-
-}
-
-.header-right{
-
-display:flex;
-
-align-items:center;
-
-gap:18px;
-
-}
-
-.user-info{
-
-text-align:right;
-
-}
-
-.user-info h4{
-
-margin:0;
-
-font-size:15px;
-
-color:#0f172a;
-
-}
-
-.user-info p{
-
-margin:0;
-
-font-size:13px;
-
-color:#64748b;
-
-}
-
-.avatar{
-
-width:42px;
-
-height:42px;
-
-border-radius:50%;
-
-background:#2563eb;
-
-color:#fff;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-weight:600;
-
-font-size:18px;
-
-cursor:pointer;
-
-}
-.header-logout{
-
-padding:10px 18px;
-
-background:#dc2626;
-
-color:white;
-
-border:none;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-size:14px;
-
-font-weight:500;
-
-transition:.3s;
-
-}
-
-.header-logout:hover{
-
-background:#b91c1c;
-
-}/* Hamburger Button */
-
-.menu-btn{
-
-display:none;
-
-width:42px;
-
-height:42px;
-
-border:none;
-
-background:white;
-
-border-radius:10px;
-
-cursor:pointer;
-
-align-items:center;
-
-justify-content:center;
-
-transition:.3s;
-
-margin-right:10px;
-
-}
 
 .menu-btn:hover{
 
-background:#f1f5f9;
+    color:#2563eb;
 
 }
 
 
-/* Mobile */
 
-@media (max-width:768px){
+.header-logo {
+
+    width:42px;
+
+    height:42px;
+
+    object-fit:contain;
+
+}
+
+
+
+
+.brand {
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+.brand h2 {
+
+    margin:0;
+
+    font-size:22px;
+
+    color:#0f172a;
+
+    font-weight:700;
+
+}
+
+
+
+.brand span {
+
+    font-size:13px;
+
+    color:#64748b;
+
+}
+
+
+
+
+
+/* =================================
+   RIGHT SECTION
+================================= */
+
+
+.header-right {
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+
+
+.profile {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+.user-info {
+
+    text-align:right;
+
+}
+
+
+
+.user-info h4 {
+
+    margin:0;
+
+    font-size:15px;
+
+    color:#0f172a;
+
+}
+
+
+
+.user-info p {
+
+    margin:2px 0;
+
+    font-size:12px;
+
+    color:#64748b;
+
+}
+
+
+
+
+
+/* =================================
+   AVATAR
+================================= */
+
+
+.avatar {
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+/* =================================
+   DROPDOWN
+================================= */
+
+
+.profile-dropdown {
+
+
+    position:absolute;
+
+    right:0;
+
+    top:55px;
+
+    width:260px;
+
+    background:white;
+
+    border-radius:16px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+    padding:15px;
+
+    z-index:2000;
+
+
+}
+
+
+
+.dropdown-user {
+
+
+    padding-bottom:12px;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+
+
+.dropdown-user h4 {
+
+
+    margin:0;
+
+    font-size:16px;
+
+    color:#0f172a;
+
+}
+
+
+
+.dropdown-user p {
+
+
+    margin:4px 0 0;
+
+    font-size:12px;
+
+    color:#64748b;
+
+
+}
+
+
+
+
+.dropdown-logout {
+
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ef4444;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+
+
+.dropdown-logout:hover{
+
+
+    background:#dc2626;
+
+}
+
+
+
+.rotate{
+
+    transform:rotate(180deg);
+
+    transition:.3s;
+
+}
+
+
+
+
+
+/* =================================
+   TABLET
+================================= */
+
+
+@media(max-width:992px){
+
 
 .header{
 
-padding:0 15px;
+    padding:0 16px;
 
 }
 
-.menu-btn{
 
-display:flex;
 
-}
+.brand h2{
 
-.user-info{
-
-display:none;
+    font-size:20px;
 
 }
 
-.header-left h2{
-
-font-size:18px;
 
 }
+
+
+
+
+
+/* =================================
+   MOBILE
+================================= */
+
+
+@media(max-width:768px){
+
+
+.header{
+
+    height:64px;
+
+    padding:0 12px;
+
+}
+
+
 
 .header-logo{
 
-width:40px;
+    width:34px;
 
-height:40px;
-
-}
-
-.header-logout{
-
-padding:8px 14px;
-
-font-size:13px;
+    height:34px;
 
 }
 
-=======
-/* ===========================
-   HEADER
-=========================== */
 
-.header {
-    height: 70px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    border-bottom: 1px solid #e5e7eb;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+
+.brand h2{
+
+    font-size:18px;
+
 }
 
-/* ===========================
-   LEFT
-=========================== */
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex: 1;
-    min-width: 0;
+
+.brand span{
+
+    font-size:11px;
+
 }
 
-.menu-btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #334155;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+
+
+.user-info{
+
+    display:none;
+
 }
 
-.header-logo {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
-    flex-shrink: 0;
+
+
+.avatar{
+
+    width:36px;
+
+    height:36px;
+
+    font-size:16px;
+
 }
 
-.brand {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
+
+
+.profile-dropdown{
+
+    right:-10px;
+
+    width:240px;
+
 }
 
-.brand h2 {
-    margin: 0;
-    font-size: 22px;
-    color: #0f172a;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+
 }
 
-.brand span {
-    font-size: 13px;
-    color: #64748b;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
 
-/* ===========================
-   RIGHT
-=========================== */
 
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-shrink: 0;
-}
 
-.profile-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    position: relative;
-}
 
-.user-info {
-    text-align: right;
-}
-
-.user-info h4 {
-    margin: 0;
-    font-size: 15px;
-    color: #0f172a;
-}
-
-.user-info p {
-    margin: 2px 0;
-    font-size: 12px;
-    color: #64748b;
-}
-
-.avatar {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #2563eb;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.avatar.big {
-    width: 45px;
-    height: 45px;
-}
-
-/* ===========================
-   DROPDOWN
-=========================== */
-
-.profile-dropdown {
-    position: absolute;
-    right: 0;
-    top: 55px;
-    width: 260px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, .15);
-    padding: 15px;
-    z-index: 2000;
-}
-
-.dropdown-user {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.dropdown-user p {
-    font-size: 12px;
-    color: #64748b;
-}
-
-.profile-dropdown hr {
-    border: none;
-    border-top: 1px solid #e5e7eb;
-    margin: 12px 0;
-}
-
-.profile-dropdown button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border: none;
-    background: none;
-    padding: 12px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    color: #334155;
-}
-
-.profile-dropdown button:hover {
-    background: #f1f5f9;
-}
-
-.profile-dropdown .logout-item {
-    color: #dc2626;
-}
-
-.rotate {
-    transform: rotate(180deg);
-    transition: .3s;
-}
-
-/* ===========================
-   TABLET
-=========================== */
-
-@media (max-width: 992px) {
-
-    .header {
-        padding: 0 16px;
-    }
-
-    .brand h2 {
-        font-size: 20px;
-    }
-
-    .brand span {
-        font-size: 12px;
-    }
-
-    .user-info h4 {
-        font-size: 14px;
-    }
-
-    .user-info p {
-        font-size: 11px;
-    }
-}
-
-/* ===========================
-   MOBILE
-=========================== */
-
-@media (max-width: 768px) {
-
-    .header {
-        padding: 0 12px;
-        height: 64px;
-    }
-
-    .header-left {
-        gap: 10px;
-    }
-
-    .header-logo {
-        width: 34px;
-        height: 34px;
-    }
-
-    .brand h2 {
-        font-size: 18px;
-    }
-
-    .brand span {
-        font-size: 11px;
-    }
-
-    /* Hide name & email */
-    .user-info {
-        display: none;
-    }
-
-    .avatar {
-        width: 36px;
-        height: 36px;
-        font-size: 16px;
-    }
-
-    .profile-dropdown {
-        right: -10px;
-        width: 240px;
-    }
-}
-
-/* ===========================
+/* =================================
    SMALL MOBILE
-=========================== */
+================================= */
 
-@media (max-width: 480px) {
 
-    .header {
-        padding: 0 10px;
-    }
+@media(max-width:480px){
 
-    .brand h2 {
-        font-size: 16px;
-    }
 
-    .brand span {
-        font-size: 10px;
-    }
+.brand h2{
 
-    .header-logo {
-        width: 30px;
-        height: 30px;
-    }
+    font-size:16px;
 
-    .avatar {
-        width: 34px;
-        height: 34px;
-        font-size: 14px;
-    }
+}
 
-    .profile-dropdown {
-        width: 220px;
-    }
->>>>>>> 9e08fb9 (Initial commit)
+
+
+.brand span{
+
+    display:none;
+
+}
+
+
+
+.header-logo{
+
+    width:30px;
+
+    height:30px;
+
+}
+
+
+
+.avatar{
+
+    width:34px;
+
+    height:34px;
+
+}
+
+
+
+.profile-dropdown{
+
+    width:220px;
+
+}
+
+
+
 }

@@ -1,203 +1,3 @@
-<<<<<<< HEAD
-// // import { NavLink } from "react-router-dom";
-// // import "../styles/Sidebar.css";
-
-
-// // export default function Sidebar(){
-
-// // return(
-
-// // <div className="sidebar">
-
-
-// // <div className="logo">
-// //     SteamGuard
-// // </div>
-
-
-// // <nav>
-
-
-// // <NavLink to="/dashboard">
-// // 📊 Dashboard
-// // </NavLink>
-
-
-// // <NavLink to="/organizations">
-// // 🏢 Organizations
-// // </NavLink>
-
-
-// // <NavLink to="/devices">
-// // ⚙️ Devices
-// // </NavLink>
-
-
-// // <NavLink to="/alerts">
-// // 🔔 Alerts
-// // </NavLink>
-
-
-// // <NavLink to="/database">
-// // 🗄 Database
-// // </NavLink>
-
-
-// // <NavLink to="/settings">
-// // ⚙ Settings
-// // </NavLink>
-
-
-// // </nav>
-
-
-// // <button className="logout">
-// // Logout
-// // </button>
-
-
-// // </div>
-
-// // )
-
-// // }
-
-// import { NavLink, useNavigate } from "react-router-dom";
-// import "../styles/Sidebar.css";
-
-
-// export default function Sidebar(){
-
-// const navigate = useNavigate();
-
-
-// const handleLogout = () => {
-
-//     // JWT token remove karo
-//     localStorage.removeItem("token");
-
-//     // Login page redirect
-//     navigate("/login");
-
-// };
-
-
-// return(
-
-// <div className="sidebar">
-
-
-// <div className="logo">
-//     SteamGuard
-// </div>
-
-
-// <nav>
-
-
-// <NavLink to="/dashboard">
-// 📊 Dashboard
-// </NavLink>
-
-
-// <NavLink to="/organizations">
-// 🏢 Organizations
-// </NavLink>
-
-
-// <NavLink to="/devices">
-// ⚙️ Devices
-// </NavLink>
-
-
-// <NavLink to="/alerts">
-// 🔔 Alerts
-// </NavLink>
-
-
-// <NavLink to="/database">
-// 🗄 Database
-// </NavLink>
-
-
-// <NavLink to="/settings">
-// ⚙ Settings
-// </NavLink>
-
-
-// </nav>
-
-
-// <button 
-// className="logout"
-// onClick={handleLogout}
-// >
-// Logout
-// </button>
-
-
-// </div>
-
-// )
-
-// }
-
-import { NavLink, useNavigate } from "react-router-dom";
-import "../styles/Sidebar.css";
-
-export default function Sidebar({
-
-    sidebarOpen,
-    setSidebarOpen,
-    collapsed
-
-})  {
-    const navigate = useNavigate();
-
-    const logout = () => {
-
-        localStorage.removeItem("token");
-
-        navigate("/login");
-    };
-
-    return (
-<aside
-    className={`
-        sidebar
-        ${sidebarOpen ? "open" : ""}
-        ${collapsed ? "collapsed" : ""}
-    `}
->
-            <div className="sidebar-menu">
-
-              <NavLink
-    to="/home"
-    onClick={() => setSidebarOpen(false)}
->
-                    🏠
-                    <span>Home</span>
-                </NavLink>
-
-                <NavLink to="/profile"
-                onClick={() => setSidebarOpen(false)}>
-                    👤
-                    <span>Profile</span>
-                </NavLink>
-
-                <NavLink to="/settings"
-                onClick={() => setSidebarOpen(false)}>
-                    ⚙
-                    <span>Settings</span>
-                </NavLink>
-
-            </div>
-
-        </aside>
-
-    );
-
-=======
 import { NavLink } from "react-router-dom";
 import "../styles/Sidebar.css";
 
@@ -214,8 +14,101 @@ import {
   BellRing,
   FileText,
   Settings,
-  CircleUser,
 } from "lucide-react";
+
+
+const menuSections = [
+
+  {
+    title: "MAIN",
+    items: [
+      {
+        path: "/home",
+        name: "Home",
+        icon: House,
+      },
+      {
+        path: "/dashboard",
+        name: "Dashboard",
+        icon: LayoutDashboard,
+      },
+    ],
+  },
+
+
+  {
+    title: "MANAGEMENT",
+    items: [
+      {
+        path: "/organizations",
+        name: "Organizations",
+        icon: Building2,
+      },
+      {
+        path: "/customers",
+        name: "Customers",
+        icon: Users,
+      },
+      {
+        path: "/users",
+        name: "Users",
+        icon: UserCog,
+      },
+      {
+        path: "/devices",
+        name: "Devices",
+        icon: Cpu,
+      },
+      {
+        path: "/sensors",
+        name: "Sensors",
+        icon: Thermometer,
+      },
+    ],
+  },
+
+
+  {
+    title: "MONITORING",
+    items: [
+      {
+        path: "/telemetry",
+        name: "Telemetry",
+        icon: Activity,
+      },
+      {
+        path: "/analytics",
+        name: "Analytics",
+        icon: BarChart3,
+      },
+      {
+        path: "/alerts",
+        name: "Alerts",
+        icon: BellRing,
+      },
+      {
+        path: "/reports",
+        name: "Reports",
+        icon: FileText,
+      },
+    ],
+  },
+
+
+  {
+    title: "SYSTEM",
+    items: [
+      {
+        path: "/settings",
+        name: "Settings",
+        icon: Settings,
+      },
+    ],
+  },
+
+];
+
+
 
 export default function Sidebar({
   sidebarOpen,
@@ -223,118 +116,117 @@ export default function Sidebar({
   collapsed,
 }) {
 
+
   const closeSidebar = () => {
-    if (window.innerWidth <= 768) {
+
+    if(window.innerWidth <= 768){
       setSidebarOpen(false);
     }
+
   };
 
+
+
   return (
+
     <aside
-      className={`sidebar ${
-        sidebarOpen ? "open" : ""
-      } ${collapsed ? "collapsed" : ""}`}
+      className={`sidebar 
+      ${sidebarOpen ? "open" : ""}
+      ${collapsed ? "collapsed" : ""}`}
     >
+
 
       <div className="sidebar-menu">
 
-        {/* MAIN */}
-        {!collapsed && <p className="menu-title">MAIN</p>}
 
-        <NavLink to="/home" onClick={closeSidebar}>
-          <House size={20} />
-          <span>Home</span>
-        </NavLink>
+        {
+          menuSections.map((section)=>(
+            
+            <div 
+              className="sidebar-section"
+              key={section.title}
+            >
 
-        <NavLink to="/dashboard" onClick={closeSidebar}>
-          <LayoutDashboard size={20} />
-          <span>Dashboard</span>
-        </NavLink>
 
-        {/* MANAGEMENT */}
-        {!collapsed && (
-          <p className="menu-title">MANAGEMENT</p>
-        )}
+              {
+                !collapsed &&
+                <p className="menu-title">
+                  {section.title}
+                </p>
+              }
 
-        <NavLink to="/organizations" onClick={closeSidebar}>
-          <Building2 size={20} />
-          <span>Organizations</span>
-        </NavLink>
 
-        <NavLink to="/customers" onClick={closeSidebar}>
-          <Users size={20} />
-          <span>Customers</span>
-        </NavLink>
 
-        <NavLink to="/users" onClick={closeSidebar}>
-          <UserCog size={20} />
-          <span>Users</span>
-        </NavLink>
+              {
+                section.items.map((item)=>{
 
-        <NavLink to="/devices" onClick={closeSidebar}>
-          <Cpu size={20} />
-          <span>Devices</span>
-        </NavLink>
 
-        <NavLink to="/sensors" onClick={closeSidebar}>
-          <Thermometer size={20} />
-          <span>Sensors</span>
-        </NavLink>
+                  const Icon = item.icon;
 
-        {/* MONITORING */}
-        {!collapsed && (
-          <p className="menu-title">MONITORING</p>
-        )}
 
-        <NavLink to="/telemetry" onClick={closeSidebar}>
-          <Activity size={20} />
-          <span>Telemetry</span>
-        </NavLink>
+                  return (
 
-        <NavLink to="/analytics" onClick={closeSidebar}>
-          <BarChart3 size={20} />
-          <span>Analytics</span>
-        </NavLink>
+                    <NavLink
+                      key={item.path}
+                      to={item.path}
+                      onClick={closeSidebar}
+                    >
 
-        <NavLink to="/alerts" onClick={closeSidebar}>
-          <BellRing size={20} />
-          <span>Alerts</span>
-        </NavLink>
+                      <Icon size={20}/>
 
-        <NavLink to="/reports" onClick={closeSidebar}>
-          <FileText size={20} />
-          <span>Reports</span>
-        </NavLink>
+                      <span>
+                        {item.name}
+                      </span>
 
-        {/* SYSTEM */}
-        {!collapsed && (
-          <p className="menu-title">SYSTEM</p>
-        )}
 
-        <NavLink to="/settings" onClick={closeSidebar}>
-          <Settings size={20} />
-          <span>Settings</span>
-        </NavLink>
+                    </NavLink>
+
+                  );
+
+
+                })
+              }
+
+
+            </div>
+
+          ))
+        }
+
 
       </div>
 
-      {!collapsed && (
-        <div className="sidebar-footer">
 
-          <div className="sidebar-version">
 
-            <h3>SteamGuard</h3>
+      {
+        !collapsed && (
 
-            <p>Industrial IIoT Platform</p>
+          <div className="sidebar-footer">
 
-            <small>Version 1.0.0</small>
+            <div className="sidebar-version">
+
+              <h3>
+                SteamGuard
+              </h3>
+
+              <p>
+                Industrial IIoT Platform
+              </p>
+
+              <small>
+                Version 1.0.0
+              </small>
+
+            </div>
 
           </div>
 
-        </div>
-      )}
+        )
+      }
+
 
     </aside>
+
   );
->>>>>>> 9e08fb9 (Initial commit)
+
 }

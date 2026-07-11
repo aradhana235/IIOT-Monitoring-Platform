@@ -1,85 +1,14 @@
-<<<<<<< HEAD
-// // localStorage.removeItem("token");
-
-// // navigate("/login");
-
-// import "../styles/Header.css";
-
-// import { useNavigate } from "react-router-dom";
-
-
-// export default function Header(){
-
-// const navigate = useNavigate();
-
-
-// const logout = ()=>{
-
-//     localStorage.removeItem("token");
-
-//     navigate("/login");
-
-// }
-
-
-// return(
-
-// <header className="header">
-
-
-// <div className="logo">
-
-//      SteamGuard
-
-// </div>
-
-
-
-// <div className="header-right">
-
-
-// <span>
-//     Admin
-// </span>
-
-
-// <button onClick={logout}>
-// Logout
-// </button>
-
-
-// </div>
-
-
-// </header>
-
-
-// )
-
-// }
-
-import "../styles/Header.css";
-import logo from "../assets/alphacore logo.png";
-import { useNavigate } from "react-router-dom";
-import { Menu } from "lucide-react";
-=======
 import "../styles/Header.css";
 
 import logo from "../assets/alphacore logo.png";
 
 import { useNavigate } from "react-router-dom";
-import { 
-  Menu,
-  ChevronDown,
-  User,
-  Settings,
-  LogOut
-} from "lucide-react";
 
-import { useState, useEffect, useRef } from "react";
+import { Menu, ChevronDown } from "lucide-react";
+
+import { useState } from "react";
 
 
->>>>>>> 9e08fb9 (Initial commit)
 export default function Header({
 
     sidebarOpen,
@@ -88,352 +17,251 @@ export default function Header({
     collapsed,
     setCollapsed
 
-<<<<<<< HEAD
-})  {
-const navigate = useNavigate();
-  // Later we'll get this from login API
-  const user = {
-    name: "Admin",
-    email: "admin@alphacore.in"
-  };
-=======
 }) {
 
 
-const navigate = useNavigate();
-
-const [open, setOpen] = useState(false);
-
-const dropdownRef = useRef(null);
+    const navigate = useNavigate();
 
 
-
-const user = {
-
-    name:"Admin",
-
-    email:"admin@alphacore.in"
-
-};
+    const [profileOpen, setProfileOpen] = useState(false);
 
 
 
->>>>>>> 9e08fb9 (Initial commit)
-const handleLogout = () => {
+    const user = {
 
-    localStorage.removeItem("token");
+        name:"Admin",
 
-<<<<<<< HEAD
-    navigate("/login", { replace: true });
+        email:"admin@alphacore.in"
 
-};
-  return (
-    <header className="header">
+    };
 
-    <div className="header-left">
 
- <button
-    className="menu-btn"
-    onClick={() => {
 
-        if (window.innerWidth <= 768) {
+
+
+    const handleLogout = ()=>{
+
+
+        localStorage.removeItem("token");
+
+
+        navigate("/login",{
+
+            replace:true
+
+        });
+
+
+    };
+
+
+
+
+
+    const toggleSidebar = ()=>{
+
+
+        if(window.innerWidth <= 768){
+
 
             setSidebarOpen(!sidebarOpen);
 
-        } else {
+
+        }
+        else{
+
 
             setCollapsed(!collapsed);
 
+
         }
 
-    }}
->
-    <Menu size={22} />
-</button>
 
-  <img
-    src={logo}
-    alt="AlphaCore"
-    className="header-logo"
-  />
+    };
 
-  <div>
 
-    <h2>SteamGuard</h2>
 
-    <span>Industrial IIoT Platform</span>
 
-  </div>
 
-</div>
-      <div className="header-right">
+    return (
 
-        <div className="user-info">
-          <h4>{user.name}</h4>
-          <p>{user.email}</p>
-        </div>
+        <header className="header">
 
-        <div className="avatar">
-          {user.name.charAt(0)}
-        </div>
- <button
-    className="header-logout"
-    onClick={handleLogout}
->
-    Logout
-</button>
-      </div>
 
-    </header>
-  );
-=======
-    navigate("/login",{replace:true});
+            <div className="header-left">
 
-};
 
+                <button
 
+                    className="menu-btn"
 
-useEffect(()=>{
+                    onClick={toggleSidebar}
 
+                >
 
-const closeDropdown=(e)=>{
+                    <Menu size={22}/>
 
-if(
-dropdownRef.current &&
-!dropdownRef.current.contains(e.target)
-){
 
-setOpen(false);
+                </button>
 
-}
 
-};
 
 
-document.addEventListener(
-"mousedown",
-closeDropdown
-);
 
+                <img
 
-return()=>{
+                    src={logo}
 
-document.removeEventListener(
-"mousedown",
-closeDropdown
-);
+                    alt="SteamGuard"
 
-};
+                    className="header-logo"
 
+                />
 
-},[]);
 
 
 
-return (
+                <div className="brand">
 
-<header className="header">
 
+                    <h2>
+                        SteamGuard
+                    </h2>
 
-<div className="header-left">
 
+                    <span>
+                        Industrial IIoT Platform
+                    </span>
 
-<button
 
-className="menu-btn"
+                </div>
 
-onClick={()=>{
 
 
-if(window.innerWidth <=768){
+            </div>
 
-setSidebarOpen(!sidebarOpen);
 
-}
 
-else{
 
-setCollapsed(!collapsed);
 
-}
 
 
-}}
+            <div className="header-right">
 
->
 
-<Menu size={22}/>
+                <div
 
-</button>
+                    className="profile"
 
+                    onClick={()=>setProfileOpen(!profileOpen)}
 
+                >
 
-<img
 
-src={logo}
 
-alt="AlphaCore"
+                    <div className="user-info">
 
-className="header-logo"
 
-/>
+                        <h4>
+                            {user.name}
+                        </h4>
 
 
-<div className="brand">
+                        <p>
+                            {user.email}
+                        </p>
 
-<h2>
-SteamGuard
-</h2>
 
-<span>
-Industrial IIoT Platform
-</span>
+                    </div>
 
-</div>
 
 
-</div>
 
 
+                    <div className="avatar">
 
-<div className="header-right">
+                        {user.name.charAt(0)}
 
+                    </div>
 
 
-<div
 
-className="profile-section"
+                    <ChevronDown
 
-ref={dropdownRef}
+                        size={18}
 
-onClick={()=>setOpen(!open)}
+                        className={
+                            profileOpen 
+                            ? "rotate"
+                            : ""
+                        }
 
->
+                    />
 
 
-<div className="user-info">
 
-<h4>
-{user.name}
-</h4>
 
-<p>
-{user.email}
-</p>
+                </div>
 
-</div>
 
 
 
-<div className="avatar">
 
-{user.name.charAt(0)}
+                {
+                    profileOpen && (
 
-</div>
+                        <div className="profile-dropdown">
 
 
-<ChevronDown 
-size={18}
-className={
-open ? "rotate" : ""
-}
-/>
+                            <div className="dropdown-user">
 
 
+                                <h4>
+                                    {user.name}
+                                </h4>
 
-{open && (
 
-<div className="profile-dropdown">
+                                <p>
+                                    {user.email}
+                                </p>
 
 
-<div className="dropdown-user">
+                            </div>
 
-<div className="avatar big">
 
-{user.name.charAt(0)}
 
-</div>
 
 
-<div>
+                            <button
 
-<h4>
-{user.name}
-</h4>
+                                onClick={handleLogout}
 
-<p>
-{user.email}
-</p>
+                                className="dropdown-logout"
 
-</div>
+                            >
 
+                                Logout
 
-</div>
 
+                            </button>
 
 
-<hr/>
 
+                        </div>
 
-<button
-onClick={()=>navigate("/profile")}
->
+                    )
+                }
 
-<User size={18}/>
 
-Profile
 
-</button>
 
 
+            </div>
 
-<button
-onClick={()=>navigate("/settings")}
->
 
-<Settings size={18}/>
 
-Settings
+        </header>
 
-</button>
+    );
 
-
-
-<hr/>
-
-
-
-<button
-
-className="logout-item"
-
-onClick={handleLogout}
-
->
-
-<LogOut size={18}/>
-
-Logout
-
-</button>
-
-
-
-</div>
-
-)}
-
-
-</div>
-
-
-
-</div>
-
-
-</header>
-
-);
-
->>>>>>> 9e08fb9 (Initial commit)
 }
