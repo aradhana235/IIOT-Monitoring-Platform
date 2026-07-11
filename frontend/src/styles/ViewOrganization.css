@@ -1,0 +1,373 @@
+/* ================= PAGE ================= */
+
+.view-page{
+    padding:30px;
+    background:#f5f7fb;
+    min-height:100vh;
+}
+
+/* ================= HEADER ================= */
+
+.view-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.view-header h2{
+    margin:0;
+    font-size:30px;
+    color:#1e293b;
+    font-weight:700;
+}
+
+.view-header p{
+    margin-top:6px;
+    color:#64748b;
+    font-size:14px;
+}
+
+.back-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:600;
+}
+
+.back-btn:hover{
+    background:#1d4ed8;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    margin-bottom:30px;
+
+}
+
+.company-logo{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:36px;
+
+    font-weight:bold;
+
+}
+
+.profile-right h2{
+
+    margin:0;
+
+    color:#1e293b;
+
+    font-size:28px;
+
+}
+
+.profile-right p{
+
+    margin:6px 0;
+
+    color:#64748b;
+
+}
+
+/* ================= STATUS ================= */
+
+.status{
+
+    display:inline-block;
+
+    margin-top:8px;
+
+    padding:6px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status.active{
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+}
+
+.status.inactive{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+}
+
+/* ================= DETAILS GRID ================= */
+
+.details-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:20px;
+
+}
+
+.detail-card{
+
+    background:#fff;
+
+    border-radius:16px;
+
+    padding:22px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.detail-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.detail-card svg{
+
+    color:#2563eb;
+
+    min-width:24px;
+
+}
+
+.detail-card span{
+
+    display:block;
+
+    color:#64748b;
+
+    font-size:13px;
+
+    margin-bottom:5px;
+
+}
+
+.detail-card h4{
+
+    margin:0;
+
+    color:#1e293b;
+
+    font-size:17px;
+
+    word-break:break-word;
+
+}
+
+/* ================= AUDIT ================= */
+
+.audit-card{
+
+    margin-top:30px;
+
+    background:#fff;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+}
+
+.audit-card h3{
+
+    margin-top:0;
+
+    margin-bottom:18px;
+
+    color:#1e293b;
+
+}
+
+.audit-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+.audit-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.audit-row span{
+
+    color:#64748b;
+
+}
+
+.audit-row strong{
+
+    color:#1e293b;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+.profile-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.profile-right{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.view-page{
+
+padding:18px;
+
+}
+
+.view-header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:15px;
+
+}
+
+.back-btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.details-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.audit-row{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:6px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.company-logo{
+
+width:70px;
+
+height:70px;
+
+font-size:28px;
+
+}
+
+.profile-right h2{
+
+font-size:22px;
+
+}
+
+.view-header h2{
+
+font-size:24px;
+
+}
+
+.detail-card{
+
+padding:18px;
+
+}
+
+}

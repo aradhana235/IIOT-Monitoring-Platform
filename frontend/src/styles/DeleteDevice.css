@@ -1,0 +1,169 @@
+/* ===========================
+   Delete Device Page
+=========================== */
+
+.delete-device-page {
+    min-height: 100vh;
+    background: #f5f7fb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* ===========================
+   Delete Card
+=========================== */
+
+.delete-card {
+    width: 550px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ===========================
+   Icon
+=========================== */
+
+.delete-icon {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: #fee2e2;
+    color: #dc2626;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===========================
+   Title
+=========================== */
+
+.delete-card h2 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 28px;
+}
+
+.delete-card p {
+    margin-top: 15px;
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* ===========================
+   Device Information
+=========================== */
+
+.device-info {
+    margin-top: 30px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.device-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.device-row:last-child {
+    border-bottom: none;
+}
+
+.device-row label {
+    font-weight: 600;
+    color: #475569;
+}
+
+.device-row span {
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.delete-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #e2e8f0;
+    color: #1e293b;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    background: #cbd5e1;
+}
+
+.delete-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #dc2626;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.delete-btn:hover {
+    background: #b91c1c;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 768px) {
+
+    .delete-card {
+        width: 100%;
+        padding: 25px;
+    }
+
+    .device-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .delete-buttons {
+        flex-direction: column;
+    }
+
+    .back-btn,
+    .delete-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+}
