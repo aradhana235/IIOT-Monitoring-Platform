@@ -1,5 +1,12 @@
 import api from "../api/api";
 
 export const getDevices = () => {
-    return api.get("/api/devices");
+
+    const token = localStorage.getItem("token");
+
+    return api.get("/api/devices", {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
 };

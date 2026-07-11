@@ -40,7 +40,62 @@
 #      - org.springframework.boot.autoconfigure.cassandra.CassandraReactiveAutoConfiguration
 #      - org.springframework.boot.autoconfigure.cassandra.CassandraReactiveHealthContributorAutoConfiguration
 #      - org.springframework.boot.actuate.autoconfigure.cassandra.CassandraHealthContributorAutoConfiguration
+#spring:
+# mail:
+#  host: smtp.gmail.com
+#  port: 587
+#  username: guptaaeadhana05@gmail.com
+#  password: "CollegesspassA12@1234783jdjehd"
+# properties:
+#  mail:
+#  smtp:
+#  auth: true
+#  starttls:
+#  enable: true
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/iiot_platform
+#    username: postgres
+#    password: postgres@123
+#    driver-class-name: org.postgresql.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#  cassandra:
+#    contact-points: localhost
+#    port: 9042
+#    keyspace-name: iiot_platform
+#    local-datacenter: datacenter1
+#    schema-action: none
+#
+#  web:
+#    error:
+#      include-message: always
+#      include-stacktrace: always
+#
+#logging:
+#  level:
+#    org.springframework: INFO
+#    com.enterprise.iiot: DEBUG
+
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: guptaaradhana05@gmail.com
+    password: qgpd ukjt ufza jtuj
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
   datasource:
     url: jdbc:postgresql://localhost:5432/iiot_platform
@@ -63,10 +118,10 @@ spring:
     local-datacenter: datacenter1
     schema-action: none
 
-  web:
-    error:
-      include-message: always
-      include-stacktrace: always
+web:
+  error:
+    include-message: always
+    include-stacktrace: always
 
 logging:
   level:

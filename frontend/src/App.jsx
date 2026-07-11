@@ -122,10 +122,18 @@
 // export default App
 
 
-import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
+// import login from "./pages/login"
+// function App() {
+//   return <Dashboard />;
+// }
+
+
+// export default App;
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return <Dashboard />;
+  return <AppRoutes />;
 }
 
 export default App;

@@ -182,3 +182,32 @@
     border-right-color: var(--border);
   }
 }
+/* 
+
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body,
+#root{
+    width:100%;
+    min-height:100vh;
+}
+
+body{
+
+  font-family:'Poppins',sans-serif;
+  background:#f8fafc;
+  overflow:hidden;
+
+}
+
+a{
+
+  text-decoration:none;
+
+} */
