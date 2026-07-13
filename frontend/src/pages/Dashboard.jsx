@@ -1,135 +1,126 @@
-import { useEffect, useState } from "react";
-import { getDevices } from "../services/deviceService";
-import { getTelemetry } from "../services/TelemetryService";
-// import { getTelemetry } from "../services/telemetryService";
-function Dashboard() {
+import "../styles/Dashboard.css";
 
-    const [devices, setDevices] = useState([]);
-const [telemetry, setTelemetry] = useState([]);
-    useEffect(() => {
+import DashboardCards from "../components/Dashboard/DashboardCard";
+import TelemetryChart from "../components/Dashboard/TelemetryChart";
+import DeviceStatusChart from "../components/Dashboard/DeviceStatusChart";
+import SensorStatusChart from "../components/Dashboard/SensorStatusChart";
+import MonthlyAlertChart from "../components/Dashboard/MonthlyAlertChart";
+import ProfitLoss from "../components/Dashboard/ProfitLoss";
+import RecentDeviceTable from "../components/Dashboard/RecentDeviceTable";
+import RecentSensorTable from "../components/Dashboard/RecentSensorTable";
+import RecentAlertTable from "../components/Dashboard/RecentAlertTable";
 
-        loadDevices();
+export default function Dashboard() {
 
-    }, []);
+  return (
 
-    const loadTelemetry = async (deviceId) => {
+    <div className="dashboard">
 
-    try {
+      {/* ================= HEADER ================= */}
 
-        const response = await getTelemetry(deviceId);
+      <div className="dashboard-header">
 
-        console.log(response.data);
+        <div className="dashboard-title">
 
-        setTelemetry(response.data);
+          <h2>Industrial IIoT Dashboard</h2>
 
-    } catch (error) {
+          <p>
+            Real-time monitoring of industrial assets and steam systems.
+          </p>
 
-        console.error(error);
+        </div>
 
-    }
+        <div className="dashboard-actions">
 
-};
+          <select className="dashboard-select">
+            <option>Organization</option>
+          </select>
 
-    const loadDevices = async () => {
+          <select className="dashboard-select">
+            <option>Customer</option>
+          </select>
 
-        try {
+          <select className="dashboard-select">
+            <option>Plant</option>
+          </select>
 
-            const response = await getDevices();
+          <input
+            type="date"
+            className="dashboard-date"
+          />
 
-            console.log(response.data);
+          <button className="refresh-btn">
+            🔄 Refresh
+          </button>
 
-            setDevices(response.data);
+          <button className="export-btn">
+            📄 Export
+          </button>
 
-        } catch (error) {
+        </div>
 
-            console.error(error);
+      </div>
 
-        }
+      {/* ================= KPI ================= */}
 
-    };
+      <DashboardCards />
 
-    return (
-    <div>
+      {/* ================= CHARTS ================= */}
 
-        <h1>Enterprise IIoT Dashboard</h1>
+      <div className="analytics-grid">
 
-        <hr />
+        <div className="dashboard-widget">
+          <TelemetryChart />
+        </div>
 
-        <h2>Devices (PostgreSQL)</h2>
+        <div className="dashboard-widget">
+          <DeviceStatusChart />
+        </div>
 
-        <table border="1" cellPadding="10">
+        <div className="dashboard-widget">
+          <SensorStatusChart />
+        </div>
 
-            <thead>
+        <div className="dashboard-widget">
+          <MonthlyAlertChart />
+        </div>
 
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>Telemetry</th>
-                </tr>
+      </div>
 
-            </thead>
+      {/* ================= PROFIT ================= */}
 
-            <tbody>
+      <div className="dashboard-section">
 
-                {devices.map(device => (
+        <ProfitLoss />
 
-                    <tr key={device.id}>
+      </div>
 
-                        <td>{device.id}</td>
-                        <td>{device.deviceName}</td>
-                        <td>{device.deviceType}</td>
-                        <td>{device.status}</td>
+      {/* ================= DEVICES ================= */}
 
-                        <td>
-                            <button onClick={() => loadTelemetry(device.id)}>
-                                View Telemetry
-                            </button>
-                        </td>
+      <div className="dashboard-section">
 
-                    </tr>
+        <RecentDeviceTable />
 
-                ))}
+      </div>
 
-            </tbody>
+      {/* ================= SENSORS ================= */}
 
-        </table>
+      <div className="dashboard-section">
 
-        <br />
+        <RecentSensorTable />
 
-        <h2>Cassandra Telemetry</h2>
+      </div>
 
-        <table border="1" cellPadding="10">
+      {/* ================= ALERTS ================= */}
 
-            <thead>
+      <div className="dashboard-section">
 
-                <tr>
-                    <th>Timestamp</th>
-                    <th>Temperature</th>
-                    <th>Humidity</th>
-                </tr>
+        <RecentAlertTable />
 
-            </thead>
-
-            <tbody>
-
-                {telemetry.map((t, index) => (
-
-                    <tr key={index}>
-                        <td>{t.key.ts}</td>
-                        <td>{t.temperature}</td>
-                        <td>{t.humidity}</td>
-                    </tr>
-
-                ))}
-
-            </tbody>
-
-        </table>
+      </div>
 
     </div>
-);
-}
 
-export default Dashboard;
+  );
+
+}

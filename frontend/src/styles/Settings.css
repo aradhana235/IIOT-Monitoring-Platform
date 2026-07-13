@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Settings.css - SteamGuard IIoT Platform
+   ========================================================================== */
+
+:root {
+  --st-accent: #2563eb;
+  --st-accent-dark: #1d4ed8;
+  --st-accent-light: #eff6ff;
+  --st-success: #16a34a;
+  --st-success-bg: #dcfce7;
+  --st-danger: #dc2626;
+  --st-danger-bg: #fee2e2;
+  --st-text-primary: #111827;
+  --st-text-secondary: #6b7280;
+  --st-border: #e5e7eb;
+  --st-bg: #f3f4f6;
+  --st-card-bg: #ffffff;
+  --st-radius: 10px;
+  --st-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.st-page {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--st-bg);
+  min-height: 100%;
+  padding: 24px 32px;
+  color: var(--st-text-primary);
+}
+
+.st-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.st-header svg { color: var(--st-accent); }
+.st-header h1 { font-size: 24px; font-weight: 700; margin: 0; }
+.st-subtitle {
+  color: var(--st-text-secondary);
+  font-size: 14px;
+  margin: 0 0 24px 0;
+}
+
+.st-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--st-border);
+}
+.st-tab {
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--st-text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.st-tab.active {
+  color: var(--st-accent);
+  border-bottom-color: var(--st-accent);
+}
+
+.st-card {
+  background: var(--st-card-bg);
+  border-radius: var(--st-radius);
+  box-shadow: var(--st-shadow);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.st-card h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+.st-card .st-card-desc {
+  font-size: 13px;
+  color: var(--st-text-secondary);
+  margin: 0 0 20px 0;
+}
+
+.st-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.st-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--st-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+.st-avatar-name { font-weight: 700; font-size: 15px; }
+.st-avatar-role { font-size: 13px; color: var(--st-text-secondary); }
+
+.st-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.st-form-grid .st-full { grid-column: 1 / -1; }
+
+.st-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--st-text-secondary);
+  margin-bottom: 6px;
+}
+.st-field input,
+.st-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--st-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.st-field input:focus,
+.st-field select:focus {
+  outline: none;
+  border-color: var(--st-accent);
+  box-shadow: 0 0 0 3px var(--st-accent-light);
+}
+.st-field input:disabled {
+  background: #f9fafb;
+  color: var(--st-text-secondary);
+}
+
+.st-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--st-border);
+}
+.st-toggle-row:last-child { border-bottom: none; }
+.st-toggle-label { font-size: 14px; font-weight: 600; }
+.st-toggle-desc { font-size: 13px; color: var(--st-text-secondary); margin-top: 2px; }
+
+.st-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.st-switch input { opacity: 0; width: 0; height: 0; }
+.st-switch-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 999px;
+  transition: 0.2s;
+}
+.st-switch-slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.st-switch input:checked + .st-switch-slider {
+  background: var(--st-accent);
+}
+.st-switch input:checked + .st-switch-slider::before {
+  transform: translateX(20px);
+}
+
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.st-btn-primary { background: var(--st-accent); color: #fff; }
+.st-btn-primary:hover { background: var(--st-accent-dark); }
+.st-btn-outline {
+  background: #fff;
+  color: var(--st-accent);
+  border: 1px solid var(--st-border);
+}
+.st-btn-outline:hover { background: var(--st-accent-light); }
+
+.st-actions-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.st-toast {
+  background: var(--st-success-bg);
+  color: var(--st-success);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}

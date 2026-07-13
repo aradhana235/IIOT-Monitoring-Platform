@@ -98,15 +98,11 @@ spring:
             enable: true
 
   datasource:
-<<<<<<< HEAD
-    url: jdbc:postgresql://localhost:5432/iiot_platform
-    username: postgres
-    password: postgres@123
-=======
+
     url:  jdbc:postgresql://100.121.90.6:5432/iiot_platform
     username: vivek
     password: vivek@123
->>>>>>> 9e08fb9 (Initial commit)
+
     driver-class-name: org.postgresql.Driver
 
   jpa:

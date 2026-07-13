@@ -11,14 +11,13 @@ import {
   Thermometer,
   Activity,
   BarChart3,
+  TrendingUp,
   BellRing,
   FileText,
   Settings,
 } from "lucide-react";
 
-
 const menuSections = [
-
   {
     title: "MAIN",
     items: [
@@ -34,7 +33,6 @@ const menuSections = [
       },
     ],
   },
-
 
   {
     title: "MANAGEMENT",
@@ -67,7 +65,6 @@ const menuSections = [
     ],
   },
 
-
   {
     title: "MONITORING",
     items: [
@@ -94,7 +91,6 @@ const menuSections = [
     ],
   },
 
-
   {
     title: "SYSTEM",
     items: [
@@ -105,128 +101,64 @@ const menuSections = [
       },
     ],
   },
-
 ];
-
-
 
 export default function Sidebar({
   sidebarOpen,
   setSidebarOpen,
   collapsed,
 }) {
-
-
   const closeSidebar = () => {
-
-    if(window.innerWidth <= 768){
+    if (window.innerWidth <= 768) {
       setSidebarOpen(false);
     }
-
   };
 
-
-
   return (
-
     <aside
-      className={`sidebar 
+      className={`sidebar
       ${sidebarOpen ? "open" : ""}
       ${collapsed ? "collapsed" : ""}`}
     >
-
-
       <div className="sidebar-menu">
+        {menuSections.map((section) => (
+          <div
+            className="sidebar-section"
+            key={section.title}
+          >
+            {!collapsed && (
+              <p className="menu-title">
+                {section.title}
+              </p>
+            )}
 
+            {section.items.map((item) => {
+              const Icon = item.icon;
 
-        {
-          menuSections.map((section)=>(
-            
-            <div 
-              className="sidebar-section"
-              key={section.title}
-            >
-
-
-              {
-                !collapsed &&
-                <p className="menu-title">
-                  {section.title}
-                </p>
-              }
-
-
-
-              {
-                section.items.map((item)=>{
-
-
-                  const Icon = item.icon;
-
-
-                  return (
-
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      onClick={closeSidebar}
-                    >
-
-                      <Icon size={20}/>
-
-                      <span>
-                        {item.name}
-                      </span>
-
-
-                    </NavLink>
-
-                  );
-
-
-                })
-              }
-
-
-            </div>
-
-          ))
-        }
-
-
+              return (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  onClick={closeSidebar}
+                >
+                  <Icon size={20} />
+                  <span>{item.name}</span>
+                </NavLink>
+              );
+            })}
+          </div>
+        ))}
       </div>
 
-
-
-      {
-        !collapsed && (
-
-          <div className="sidebar-footer">
-
-            <div className="sidebar-version">
-
-              <h3>
-                SteamGuard
-              </h3>
-
-              <p>
-                Industrial IIoT Platform
-              </p>
-
-              <small>
-                Version 1.0.0
-              </small>
-
-            </div>
-
+      {!collapsed && (
+        <div className="sidebar-footer">
+          <div className="sidebar-version">
+            <h3>SteamGuard</h3>
+            <p>Industrial IIoT Platform</p>
+            <small>Version 1.0.0</small>
           </div>
-
-        )
-      }
-
-
+        </div>
+      )}
     </aside>
-
   );
-
 }
