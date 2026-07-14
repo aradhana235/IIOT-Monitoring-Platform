@@ -1,207 +1,48 @@
-import {
-  AlertTriangle,
-  Eye,
-  Search,
-  Filter,
-} from "lucide-react";
+import React from "react";
 
-
-const alerts = [
-
-  {
-    id:1,
-    type:"Critical",
-    device:"SteamTrap-101",
-    customer:"BridgeStone",
-    message:"Full Steam Leak Detected",
-    severity:"High",
-    time:"2 min ago",
-    status:"Active"
-  },
-
-  {
-    id:2,
-    type:"Warning",
-    device:"SteamTrap-205",
-    customer:"CEAT",
-    message:"Partial Leak Detected",
-    severity:"Medium",
-    time:"10 min ago",
-    status:"Active"
-  },
-
-  {
-    id:3,
-    type:"Info",
-    device:"SteamTrap-310",
-    customer:"Ultratech",
-    message:"Sensor Calibration Required",
-    severity:"Low",
-    time:"1 hour ago",
-    status:"Resolved"
-  },
-
-  {
-    id:4,
-    type:"Critical",
-    device:"SteamTrap-415",
-    customer:"Mankind",
-    message:"Device Disconnected",
-    severity:"High",
-    time:"2 hours ago",
-    status:"Resolved"
-  }
-
+const ALERTS = [
+  { time: "22/05 09:14", device: "Row 11 Behind Press 9293 HP/1051", customer: "Apollo", severity: "Critical" },
+  { time: "21/05 17:02", device: "Curing mexanine Behind Panel/1050", customer: "Apollo", severity: "Warning" },
+  { time: "21/05 11:40", device: "Row 14 Behine Press 9362 HP/1053", customer: "Apollo", severity: "Warning" },
+  { time: "20/05 08:55", device: "Mould shop Area/1047", customer: "Apollo", severity: "Critical" },
 ];
 
+const badgeClass = {
+  Critical: "sg-badge-red",
+  Warning: "sg-badge-orange",
+  Info: "sg-badge-blue",
+};
+
 export default function RecentAlertTable() {
-
   return (
-
-    <div className="table-card">
-
-      <div className="table-header">
-
-        <div>
-
-          <h3>Recent Alerts</h3>
-
-          <p>{alerts.length} Alerts Found</p>
-
-        </div>
-
-        <div className="table-actions">
-
-          <div className="search-box">
-
-            <Search size={16}/>
-
-            <input
-              type="text"
-              placeholder="Search Alert..."
-            />
-
-          </div>
-
-          <button className="filter-btn">
-
-            <Filter size={16}/>
-
-            Filter
-
-          </button>
-
-        </div>
-
+    <div>
+      <div className="table-header-row">
+        <h3 className="widget-title" style={{ margin: 0 }}>Recent Alerts</h3>
       </div>
-
-      <div className="table-wrapper">
-
-        <table>
-
+      <div className="pl-table-wrap">
+        <table className="sg-table">
           <thead>
-
             <tr>
-
-              <th>Alert</th>
-
-              <th>Device</th>
-
-              <th>Customer</th>
-
-              <th>Message</th>
-
-              <th>Severity</th>
-
               <th>Time</th>
-
-              <th>Status</th>
-
-              <th>Action</th>
-
+              <th>Device / Trap</th>
+              <th>Customer</th>
+              <th>Severity</th>
             </tr>
-
           </thead>
-
           <tbody>
-
-            {
-
-              alerts.map((alert)=>(
-
-                <tr key={alert.id}>
-
-                  <td>
-
-                    <div className="alert-type">
-
-                      <AlertTriangle
-                        size={16}
-                        className={alert.type.toLowerCase()}
-                      />
-
-                      {alert.type}
-
-                    </div>
-
-                  </td>
-
-                  <td>{alert.device}</td>
-
-                  <td>{alert.customer}</td>
-
-                  <td>{alert.message}</td>
-
-                  <td>
-
-                    <span
-                      className={`severity ${alert.severity.toLowerCase()}`}
-                    >
-
-                      {alert.severity}
-
-                    </span>
-
-                  </td>
-
-                  <td>{alert.time}</td>
-
-                  <td>
-
-                    <span
-                      className={`status ${alert.status.toLowerCase()}`}
-                    >
-
-                      {alert.status}
-
-                    </span>
-
-                  </td>
-
-                  <td>
-
-                    <button className="view-btn">
-
-                      <Eye size={16}/>
-
-                    </button>
-
-                  </td>
-
-                </tr>
-
-              ))
-
-            }
-
+            {ALERTS.map((a, i) => (
+              <tr key={i}>
+                <td className="mono">{a.time}</td>
+                <td>{a.device}</td>
+                <td>{a.customer}</td>
+                <td>
+                  <span className={`sg-badge ${badgeClass[a.severity]}`}>{a.severity}</span>
+                </td>
+              </tr>
+            ))}
           </tbody>
-
         </table>
-
       </div>
-
     </div>
-
   );
-
 }

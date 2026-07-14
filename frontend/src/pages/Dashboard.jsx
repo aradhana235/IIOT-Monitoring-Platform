@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../styles/Dashboard.css";
 
 import DashboardCards from "../components/Dashboard/DashboardCard";
@@ -9,118 +10,79 @@ import ProfitLoss from "../components/Dashboard/ProfitLoss";
 import RecentDeviceTable from "../components/Dashboard/RecentDeviceTable";
 import RecentSensorTable from "../components/Dashboard/RecentSensorTable";
 import RecentAlertTable from "../components/Dashboard/RecentAlertTable";
+import EntityHierarchy from "../components/Dashboard/EntityHierarchy";
+import DeviceDetail from "../components/Dashboard/DeviceDetail";
 
 export default function Dashboard() {
+  const [selectedDevice, setSelectedDevice] = useState(null);
+
+  // EntityHierarchy calls onSelect with either a group node (has `children`)
+  // or a leaf device/trap (no `children` key at all). Only leaves should
+  // open the device detail page.
+  const handleTreeSelect = (node) => {
+    if (!node.children) {
+      setSelectedDevice(node);
+    }
+  };
 
   return (
-
     <div className="dashboard">
-
-      {/* ================= HEADER ================= */}
-
-      <div className="dashboard-header">
-
-        <div className="dashboard-title">
-
-          <h2>Industrial IIoT Dashboard</h2>
-
-          <p>
-            Real-time monitoring of industrial assets and steam systems.
-          </p>
-
+      <div className="dashboard-main">
+        {/* Left */}
+        <div className="dashboard-left">
+          <EntityHierarchy onSelect={handleTreeSelect} />
         </div>
 
-        <div className="dashboard-actions">
+        {/* Right */}
+        <div className="dashboard-right">
+          {selectedDevice ? (
+            <DeviceDetail
+              device={selectedDevice}
+              onBack={() => setSelectedDevice(null)}
+            />
+          ) : (
+            <>
+              {/* <div className="dashboard-banner" /> */}
 
-          <select className="dashboard-select">
-            <option>Organization</option>
-          </select>
+              <DashboardCards />
 
-          <select className="dashboard-select">
-            <option>Customer</option>
-          </select>
+              <div className="dashboard-widget">
+                <ProfitLoss />
+              </div>
 
-          <select className="dashboard-select">
-            <option>Plant</option>
-          </select>
+              <div className="chart-row">
+                <div className="dashboard-widget">
+                  <DeviceStatusChart />
+                </div>
 
-          <input
-            type="date"
-            className="dashboard-date"
-          />
+                <div className="dashboard-widget">
+                  <SensorStatusChart />
+                </div>
+              </div>
 
-          <button className="refresh-btn">
-            🔄 Refresh
-          </button>
+              <div className="dashboard-widget">
+                <TelemetryChart />
+              </div>
 
-          <button className="export-btn">
-            📄 Export
-          </button>
+              <div className="dashboard-widget">
+                <MonthlyAlertChart />
+              </div>
 
+              <div className="dashboard-widget">
+                <RecentDeviceTable />
+              </div>
+
+              <div className="dashboard-widget">
+                <RecentSensorTable />
+              </div>
+
+              <div className="dashboard-widget">
+                <RecentAlertTable />
+              </div>
+            </>
+          )}
         </div>
-
       </div>
-
-      {/* ================= KPI ================= */}
-
-      <DashboardCards />
-
-      {/* ================= CHARTS ================= */}
-
-      <div className="analytics-grid">
-
-        <div className="dashboard-widget">
-          <TelemetryChart />
-        </div>
-
-        <div className="dashboard-widget">
-          <DeviceStatusChart />
-        </div>
-
-        <div className="dashboard-widget">
-          <SensorStatusChart />
-        </div>
-
-        <div className="dashboard-widget">
-          <MonthlyAlertChart />
-        </div>
-
-      </div>
-
-      {/* ================= PROFIT ================= */}
-
-      <div className="dashboard-section">
-
-        <ProfitLoss />
-
-      </div>
-
-      {/* ================= DEVICES ================= */}
-
-      <div className="dashboard-section">
-
-        <RecentDeviceTable />
-
-      </div>
-
-      {/* ================= SENSORS ================= */}
-
-      <div className="dashboard-section">
-
-        <RecentSensorTable />
-
-      </div>
-
-      {/* ================= ALERTS ================= */}
-
-      <div className="dashboard-section">
-
-        <RecentAlertTable />
-
-      </div>
-
     </div>
-
   );
-
 }

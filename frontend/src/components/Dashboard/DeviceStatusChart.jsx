@@ -1,167 +1,44 @@
-import {
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  Legend,
-} from "recharts";
+import React from "react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
-import {
-  Wifi,
-  WifiOff,
-  Wrench,
-} from "lucide-react";
-
-const data = [
-  {
-    name: "Online",
-    value: 119,
-  },
-  {
-    name: "Offline",
-    value: 7,
-  },
-  {
-    name: "Maintenance",
-    value: 5,
-  },
-];
-
-const COLORS = [
-  "#22c55e",
-  "#ef4444",
-  "#f59e0b",
+const DATA = [
+  { name: "Blocked", value: 1, color: "#2563eb" },
+  { name: "Full Leak", value: 0, color: "#dc2626" },
+  { name: "Normal", value: 29, color: "#16a34a" },
+  { name: "Partial Leak", value: 1, color: "#f59e0b" },
 ];
 
 export default function DeviceStatusChart() {
-
-  const total = data.reduce(
-    (sum, item) => sum + item.value,
-    0
-  );
-
   return (
-
-    <div className="chart-card">
-
-      <div className="chart-header">
-
-        <div>
-
-          <h3>Device Status</h3>
-
-          <p>Real-time monitoring</p>
-
-        </div>
-
-        <span className="live-badge">
-          ● LIVE
-        </span>
-
+    <div>
+      <h3 className="widget-title">Device Status</h3>
+      <div style={{ width: "100%", height: 200 }}>
+        <ResponsiveContainer>
+          <PieChart>
+            <Pie
+              data={DATA}
+              dataKey="value"
+              nameKey="name"
+              innerRadius={55}
+              outerRadius={85}
+              paddingAngle={2}
+            >
+              {DATA.map((d) => (
+                <Cell key={d.name} fill={d.color} />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
       </div>
-
-      <ResponsiveContainer
-        width="100%"
-        height={300}
-      >
-
-        <PieChart>
-
-          <Pie
-            data={data}
-            innerRadius={70}
-            outerRadius={100}
-            dataKey="value"
-            paddingAngle={4}
-          >
-
-            {
-              data.map((entry,index)=>(
-
-                <Cell
-                  key={index}
-                  fill={COLORS[index]}
-                />
-
-              ))
-            }
-
-          </Pie>
-
-          <Tooltip />
-
-          <Legend verticalAlign="bottom"/>
-
-        </PieChart>
-
-      </ResponsiveContainer>
-
-      <div className="device-total">
-
-        Total Devices
-
-        <strong>{total}</strong>
-
+      <div className="chart-legend-row">
+        {DATA.map((d) => (
+          <span className="chart-legend-item" key={d.name}>
+            <span className="chart-legend-swatch" style={{ background: d.color }} />
+            {d.name}
+          </span>
+        ))}
       </div>
-
-      <div className="device-summary">
-
-        <div className="summary-card">
-
-          <Wifi
-            size={20}
-            color="#22c55e"
-          />
-
-          <div>
-
-            <h4>Online</h4>
-
-            <p>119</p>
-
-          </div>
-
-        </div>
-
-        <div className="summary-card">
-
-          <WifiOff
-            size={20}
-            color="#ef4444"
-          />
-
-          <div>
-
-            <h4>Offline</h4>
-
-            <p>7</p>
-
-          </div>
-
-        </div>
-
-        <div className="summary-card">
-
-          <Wrench
-            size={20}
-            color="#f59e0b"
-          />
-
-          <div>
-
-            <h4>Maintenance</h4>
-
-            <p>5</p>
-
-          </div>
-
-        </div>
-
-      </div>
-
     </div>
-
   );
-
 }

@@ -1,90 +1,101 @@
-import {
-  Activity,
-  CheckCircle2,
-  ShieldAlert,
-  AlertTriangle,
-  Flame,
-  WifiOff,
-} from "lucide-react";
+import React from "react";
 
-const dashboardCards = [
-  {
-    title: "Total Traps",
-    value: 248,
-    icon: Activity,
-    color: "#2563eb",
-    bg: "#eff6ff",
-  },
-  {
-    title: "Normal",
-    value: 210,
-    icon: CheckCircle2,
-    color: "#16a34a",
-    bg: "#ecfdf5",
-  },
-  {
-    title: "Blocked",
-    value: 12,
-    icon: ShieldAlert,
-    color: "#f59e0b",
-    bg: "#fffbeb",
-  },
-  {
-    title: "Partial Leak",
-    value: 15,
-    icon: AlertTriangle,
-    color: "#ea580c",
-    bg: "#fff7ed",
-  },
-  {
-    title: "Full Leak",
-    value: 6,
-    icon: Flame,
-    color: "#dc2626",
-    bg: "#fef2f2",
-  },
-  {
-    title: "Offline",
-    value: 5,
-    icon: WifiOff,
-    color: "#64748b",
-    bg: "#f8fafc",
-  },
+const RADIUS = 34;
+const CIRC = 2 * Math.PI * RADIUS;
 
-];
+function StatRing({ value, max, color }) {
+  const pct = max > 0 ? Math.min(value / max, 1) : 0;
+  const offset = CIRC - pct * CIRC;
 
-export default function DashboardCards() {
   return (
-    <div className="dashboard-grid">
-      {dashboardCards.map((card) => {
-        const Icon = card.icon;
+    <div className="stat-ring-wrap">
+      <svg viewBox="0 0 80 80">
+        <circle
+          className="stat-ring-track"
+          cx="40"
+          cy="40"
+          r={RADIUS}
+        />
 
-        return (
-          <div
-            className="dashboard-card"
-            key={card.title}
-          >
-            <div
-              className="icon-box"
-              style={{ background: card.bg }}
-            >
-              <Icon
-                size={30}
-                color={card.color}
-              />
-            </div>
+        <circle
+          className="stat-ring-value-path"
+          cx="40"
+          cy="40"
+          r={RADIUS}
+          stroke={color}
+          strokeDasharray={CIRC}
+          strokeDashoffset={offset}
+        />
+      </svg>
 
-            <div className="card-info">
-
-              <h2>{card.value}</h2>
-
-              <span>{card.title}</span>
-
-            </div>
-
-          </div>
-        );
-      })}
+      <div
+        className="stat-ring-number"
+        style={{ color }}
+      >
+        {value}
+      </div>
     </div>
+  );
+}
+
+export default function DashboardCard({ stats }) {
+
+  const data = stats || {
+    total: 31,
+    normal: 29,
+    blocked: 1,
+    partial: 1,
+    fullLeak: 0,
+  };
+
+  const cards = [
+    { label: "TOTAL", value: data.total, color: "#c026d3" },
+    { label: "NORMAL", value: data.normal, color: "#16a34a" },
+    { label: "BLOCKED", value: data.blocked, color: "#2563eb" },
+    { label: "PARTIAL", value: data.partial, color: "#f59e0b" },
+    { label: "FULL LEAK", value: data.fullLeak, color: "#dc2626" },
+  ];
+
+  return (
+    <>
+      {/* Banner */}
+
+      <div className="dashboard-banner">
+        <div className="banner-content">
+
+          <div>
+            <h1>Real Time Device Status</h1>
+            <p>Steam Monitoring System</p>
+          </div>
+
+          <div className="live-badge">
+            <span className="live-dot"></span>
+            LIVE
+          </div>
+
+        </div>
+      </div>
+
+      {/* Cards */}
+
+      <div className="stat-cards-grid">
+        {cards.map((c) => (
+          <div
+            className="stat-card"
+            key={c.label}
+          >
+            <span className="stat-card-label">
+              {c.label}
+            </span>
+
+            <StatRing
+              value={c.value}
+              max={data.total || 1}
+              color={c.color}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

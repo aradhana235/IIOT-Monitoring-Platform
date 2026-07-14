@@ -1,226 +1,51 @@
-import {
-  Activity,
-} from "lucide-react";
+import React from "react";
 
-
-const sensors = [
-
-  {
-    id:1,
-    name:"Temperature Sensor",
-    type:"Temperature",
-    device:"SteamTrap-001",
-    value:"128",
-    unit:"°C",
-    status:"Active",
-    updated:"30 sec ago"
-  },
-
-
-  {
-    id:2,
-    name:"Pressure Sensor",
-    type:"Pressure",
-    device:"SteamTrap-002",
-    value:"42",
-    unit:"Bar",
-    status:"Active",
-    updated:"1 min ago"
-  },
-
-
-  {
-    id:3,
-    name:"Vibration Sensor",
-    type:"Acceleration",
-    device:"SteamTrap-003",
-    value:"0.02",
-    unit:"g",
-    status:"Warning",
-    updated:"5 min ago"
-  },
-
-
-  {
-    id:4,
-    name:"Battery Sensor",
-    type:"Battery",
-    device:"SteamTrap-004",
-    value:"45",
-    unit:"%",
-    status:"Inactive",
-    updated:"1 hour ago"
-  },
-
-
+const SENSORS = [
+  { id: "ST101", type: "Temperature", customer: "Apollo", value: "142°C", status: "Normal" },
+  { id: "ST102", type: "Pressure", customer: "CEAT", value: "6.2 bar", status: "Normal" },
+  { id: "ST103", type: "Vibration", customer: "BKT", value: "3.8 mm/s", status: "Partial Leak" },
+  { id: "ST104", type: "Acoustic", customer: "Alkem", value: "84 dB", status: "Blocked" },
 ];
 
-
-
-export default function RecentSensorTable(){
-
-
-return (
-
-<div className="table-card">
-
-
-<div className="chart-header">
-
-<h3>
-Recent Sensors
-</h3>
-
-
-<span>
-Live Data
-</span>
-
-
-</div>
-
-
-
-<div className="table-wrapper">
-
-
-<table>
-
-
-<thead>
-
-<tr>
-
-
-<th>
-Sensor Name
-</th>
-
-
-<th>
-Type
-</th>
-
-
-<th>
-Device
-</th>
-
-
-<th>
-Value
-</th>
-
-
-<th>
-Unit
-</th>
-
-
-<th>
-Status
-</th>
-
-
-<th>
-Updated
-</th>
-
-
-</tr>
-
-</thead>
-
-
-
-<tbody>
-
-
-{
-
-sensors.map((sensor)=>(
-
-
-<tr key={sensor.id}>
-
-
-<td>
-
-<Activity size={15}/>
-
-{" "}
-
-{sensor.name}
-
-</td>
-
-
-<td>
-{sensor.type}
-</td>
-
-
-<td>
-{sensor.device}
-</td>
-
-
-<td>
-{sensor.value}
-</td>
-
-
-<td>
-{sensor.unit}
-</td>
-
-
-
-<td>
-
-
-<span
-
-className={`status ${sensor.status.toLowerCase()}`}
-
->
-
-{sensor.status}
-
-</span>
-
-
-</td>
-
-
-
-<td>
-{sensor.updated}
-</td>
-
-
-</tr>
-
-
-))
-
-
-}
-
-
-</tbody>
-
-
-</table>
-
-
-</div>
-
-
-</div>
-
-
-);
-
-
+const badgeClass = {
+  Normal: "sg-badge-green",
+  Blocked: "sg-badge-blue",
+  "Partial Leak": "sg-badge-orange",
+  "Full Leak": "sg-badge-red",
+};
+
+export default function RecentSensorTable() {
+  return (
+    <div>
+      <div className="table-header-row">
+        <h3 className="widget-title" style={{ margin: 0 }}>Recent Sensors</h3>
+      </div>
+      <div className="pl-table-wrap">
+        <table className="sg-table">
+          <thead>
+            <tr>
+              <th>Sensor ID</th>
+              <th>Type</th>
+              <th>Customer</th>
+              <th>Reading</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {SENSORS.map((s) => (
+              <tr key={s.id}>
+                <td className="mono">{s.id}</td>
+                <td>{s.type}</td>
+                <td>{s.customer}</td>
+                <td className="mono">{s.value}</td>
+                <td>
+                  <span className={`sg-badge ${badgeClass[s.status]}`}>{s.status}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }

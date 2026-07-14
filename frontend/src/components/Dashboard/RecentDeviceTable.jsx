@@ -1,219 +1,48 @@
-import {
-  Eye,
-} from "lucide-react";
+import React from "react";
 
-
-const devices = [
-
-  {
-    id:1,
-    name:"SteamTrap-001",
-    deviceId:"ST-1001",
-    customer:"BridgeStone",
-    status:"Online",
-    telemetry:"2 min ago",
-    battery:"92%"
-  },
-
-
-  {
-    id:2,
-    name:"SteamTrap-002",
-    deviceId:"ST-1002",
-    customer:"CEAT",
-    status:"Offline",
-    telemetry:"25 min ago",
-    battery:"65%"
-  },
-
-
-  {
-    id:3,
-    name:"SteamTrap-003",
-    deviceId:"ST-1003",
-    customer:"Ultratech",
-    status:"Online",
-    telemetry:"1 min ago",
-    battery:"88%"
-  },
-
-
-  {
-    id:4,
-    name:"SteamTrap-004",
-    deviceId:"ST-1004",
-    customer:"Mankind",
-    status:"Maintenance",
-    telemetry:"1 day ago",
-    battery:"45%"
-  },
-
-
+const DEVICES = [
+  { name: "MCB TCP 903 RHS Platen trap/1055", customer: "Apollo", status: "Normal" },
+  { name: "Row 13 Extension b/h TCP 9399/1056", customer: "Apollo", status: "Normal" },
+  { name: "Mould shop Area/1047", customer: "Apollo", status: "Blocked" },
+  { name: "MCB TCP 903 LHS Platen Trap/1043", customer: "Apollo", status: "Normal" },
+  { name: "Row 12 Behind Press 9295 HP/1042", customer: "Apollo", status: "Partial Leak" },
 ];
 
-
-
-export default function RecentDeviceTable(){
-
-
-return (
-
-<div className="table-card">
-
-
-<div className="chart-header">
-
-<h3>
-Recent Devices
-</h3>
-
-
-<span>
-View All
-</span>
-
-
-</div>
-
-
-
-<div className="table-wrapper">
-
-
-<table>
-
-
-<thead>
-
-<tr>
-
-<th>
-Device Name
-</th>
-
-<th>
-Device ID
-</th>
-
-<th>
-Customer
-</th>
-
-<th>
-Status
-</th>
-
-<th>
-Last Telemetry
-</th>
-
-<th>
-Battery
-</th>
-
-<th>
-Action
-</th>
-
-</tr>
-
-
-</thead>
-
-
-
-<tbody>
-
-
-{
-
-devices.map((device)=>(
-
-
-<tr key={device.id}>
-
-
-<td>
-{device.name}
-</td>
-
-
-<td>
-{device.deviceId}
-</td>
-
-
-<td>
-{device.customer}
-</td>
-
-
-
-<td>
-
-
-<span
-
-className={`status ${device.status.toLowerCase()}`}
-
->
-
-{device.status}
-
-</span>
-
-
-</td>
-
-
-
-<td>
-{device.telemetry}
-</td>
-
-
-
-<td>
-{device.battery}
-</td>
-
-
-
-<td>
-
-<button className="view-btn">
-
-<Eye size={17}/>
-
-</button>
-
-
-</td>
-
-
-</tr>
-
-
-))
-
-
-}
-
-
-
-</tbody>
-
-
-</table>
-
-
-</div>
-
-
-</div>
-
-
-);
-
-
+const badgeClass = {
+  Normal: "sg-badge-green",
+  Blocked: "sg-badge-blue",
+  "Partial Leak": "sg-badge-orange",
+  "Full Leak": "sg-badge-red",
+};
+
+export default function RecentDeviceTable() {
+  return (
+    <div>
+      <div className="table-header-row">
+        <h3 className="widget-title" style={{ margin: 0 }}>Recent Devices</h3>
+      </div>
+      <div className="pl-table-wrap">
+        <table className="sg-table">
+          <thead>
+            <tr>
+              <th>Device / Trap</th>
+              <th>Customer</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DEVICES.map((d) => (
+              <tr key={d.name}>
+                <td>{d.name}</td>
+                <td>{d.customer}</td>
+                <td>
+                  <span className={`sg-badge ${badgeClass[d.status]}`}>{d.status}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }
