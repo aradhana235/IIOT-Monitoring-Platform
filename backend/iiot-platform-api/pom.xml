@@ -30,49 +30,63 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
-
+ 
     <!-- REST API -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
+ 
     <!-- Spring Security -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
-
+ 
     <!-- Validation -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
-
+ 
     <!-- PostgreSQL -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-
+ 
     <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
         <scope>runtime</scope>
     </dependency>
-
+ 
     <!-- Cassandra -->
- <dependency>
+<dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-cassandra</artifactId>
     </dependency>
+    
+    <!-- MQTT Integration -->
+<dependency>
+    <groupId>org.springframework.integration</groupId>
+    <artifactId>spring-integration-mqtt</artifactId>
+</dependency>
 
+
+<!-- Eclipse MQTT Client -->
+<dependency>
+    <groupId>org.eclipse.paho</groupId>
+    <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+    <version>1.2.5</version>
+</dependency>
+ 
     <!-- Monitoring -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-
+ 
     <!-- Development -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -80,35 +94,35 @@
         <scope>runtime</scope>
         <optional>true</optional>
     </dependency>
-
+ 
     <!-- Lombok -->
     <dependency>
         <groupId>org.projectlombok</groupId>
         <artifactId>lombok</artifactId>
         <optional>true</optional>
     </dependency>
-
+ 
     <!-- Testing -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-test</artifactId>
         <scope>test</scope>
     </dependency>
-
+ 
     <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-test</artifactId>
         <scope>test</scope>
     </dependency>
-
-
+ 
+ 
 <!-- JWT API -->
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
     <artifactId>jjwt-api</artifactId>
     <version>0.12.6</version>
 </dependency>
-
+ 
 <!-- JWT Implementation -->
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
@@ -116,7 +130,7 @@
     <version>0.12.6</version>
     <scope>runtime</scope>
 </dependency>
-
+ 
 <!-- JWT Jackson JSON Support -->
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
@@ -128,16 +142,16 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-mail</artifactId>
 </dependency>
-
+ 
 </dependencies>
 	<build>
     <plugins>
-
+ 
         <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
         </plugin>
-
+ 
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -150,8 +164,8 @@
                 </annotationProcessorPaths>
             </configuration>
         </plugin>
-
+ 
     </plugins>
 </build>
-
+ 
 </project>

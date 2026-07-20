@@ -48,7 +48,7 @@ const TREE = [
   {
     id: "apollo",
     label: "apollo",
-    count: 31,
+    count: 10,
     children: [
       { id: "ap-1", label: "MCB TCP 903 RHS Platen trap/1055" },
       { id: "ap-2", label: "Row 13 Extension b/h TCP 9399/1056" },

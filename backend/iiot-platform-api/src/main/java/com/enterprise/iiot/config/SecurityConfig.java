@@ -125,8 +125,23 @@ public class SecurityConfig {
                         .authenticated()
 
                         .requestMatchers("/api/telemetry/**")
-                        .authenticated()
-
+                        .permitAll()
+                        
+                        .requestMatchers("/api/alerts/**")
+                        .permitAll()
+                        
+                        .requestMatchers("/api/status-counts/**")
+                        .permitAll()
+                        
+                        .requestMatchers("/api/alert-trend/**")
+                        .permitAll()
+                        
+                        .requestMatchers("/api/trap-stats/**")
+                        .permitAll()
+                        
+                        .requestMatchers("/api/sensor-status-counts/**")
+                        .permitAll()
+                        
                         .requestMatchers("/api/organizations/**")
                         .authenticated()
 

@@ -99,7 +99,7 @@ spring:
 
   datasource:
 
-    url:  jdbc:postgresql://100.121.90.6:5432/iiot_platform
+    url:  jdbc:postgresql://10.245.140.9:5432/iiot_platform
     username: vivek
     password: vivek@123
 
@@ -124,6 +124,14 @@ web:
   error:
     include-message: always
     include-stacktrace: always
+
+
+    
+
+mqtt:
+  broker: tcp://localhost:1883
+  topic: factory/test
+  client-id: iiot-platform
 
 logging:
   level:

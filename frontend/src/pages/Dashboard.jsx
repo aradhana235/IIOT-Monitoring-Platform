@@ -3,10 +3,13 @@ import "../styles/Dashboard.css";
 
 import DashboardCards from "../components/Dashboard/DashboardCard";
 import TelemetryChart from "../components/Dashboard/TelemetryChart";
+import StatusPercentageChart from "../components/Dashboard/StatusPercentageChart";
 import DeviceStatusChart from "../components/Dashboard/DeviceStatusChart";
 import SensorStatusChart from "../components/Dashboard/SensorStatusChart";
 import MonthlyAlertChart from "../components/Dashboard/MonthlyAlertChart";
-import ProfitLoss from "../components/Dashboard/ProfitLoss";
+import ProfitLossTable from "../components/Dashboard/ProfitLoss";
+import SteamLossChart from "../components/Dashboard/SteamLossChart";
+import TrapProblemStats from "../components/Dashboard/TrapProblemStats";
 import RecentDeviceTable from "../components/Dashboard/RecentDeviceTable";
 import RecentSensorTable from "../components/Dashboard/RecentSensorTable";
 import RecentAlertTable from "../components/Dashboard/RecentAlertTable";
@@ -47,7 +50,15 @@ export default function Dashboard() {
               <DashboardCards />
 
               <div className="dashboard-widget">
-                <ProfitLoss />
+                <ProfitLossTable />
+              </div>
+
+              <div className="dashboard-widget">
+                <SteamLossChart />
+              </div>
+
+              <div className="dashboard-widget">
+                <TrapProblemStats />
               </div>
 
               <div className="chart-row">
@@ -58,6 +69,10 @@ export default function Dashboard() {
                 <div className="dashboard-widget">
                   <SensorStatusChart />
                 </div>
+              </div>
+
+              <div className="dashboard-widget">
+                <StatusPercentageChart />
               </div>
 
               <div className="dashboard-widget">

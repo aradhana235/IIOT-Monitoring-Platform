@@ -42,10 +42,10 @@ export default function DashboardCard({ stats }) {
 
   const data = stats || {
     total: 31,
-    normal: 29,
-    blocked: 1,
+    normal: 25,
+    blocked: 2,
     partial: 1,
-    fullLeak: 0,
+    fullLeak: 3,
   };
 
   const cards = [
